@@ -50,16 +50,8 @@ class Automacao():
         self.driver = webdriver.Chrome(executable_path="C:/chromedriver.exe")
     
     def BuscarMusica(self, nome):
-        self.driver.get("https://www.youtube.com/?gl=BR&hl=pt")
-        search_yt = self.driver.find_element_by_class_name("ytd-searchbox-spt")
-        search_yt.click()
-        time.sleep(2)
-        ser = search_yt.find_element_by_class_name("gsfi")
-        ser.send_keys(nome)
-        time.sleep(1.5)
-        button_yt = self.driver.find_elements_by_class_name("ytd-searchbox")
-        button_yt[6].click()
-        time.sleep(2)
+        self.nome = nome
+        self.driver.get("https://www.youtube.com/results?search_query={}".format(self.nome))
         video = self.driver.find_elements_by_tag_name("ytd-video-renderer")
         tentativa = 0
         while True:
@@ -104,6 +96,3 @@ if __name__ == "__main__":
         url = auto.BuscarMusica(nome=music)
         auto.BaixarMusica(url=url)
     auto.Quit()
-
-
-
