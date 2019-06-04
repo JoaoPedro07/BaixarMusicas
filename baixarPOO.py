@@ -44,7 +44,7 @@ class App:
                      file.write(self.scrolled.get(1.0, END))
              self.root.destroy()
 
-class Automocao():
+class Automacao():
     
     def __init__(self):
         self.driver = webdriver.Chrome(executable_path="C:/chromedriver.exe")
@@ -96,7 +96,7 @@ if __name__ == "__main__":
     root = Tk()
     App(root)
     root.mainloop()
-    auto = Automocao()
+    auto = Automacao()
     with open("musicas.txt", "r") as file:
         musicas = file.readlines()
 
