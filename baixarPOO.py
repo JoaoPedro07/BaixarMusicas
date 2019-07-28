@@ -1,10 +1,17 @@
 from __future__ import unicode_literals
-import youtube_dl
 from tkinter import Frame, Button, END, Tk, RIGHT, Label, LEFT, BOTTOM
-from tkinter.scrolledtext import ScrolledText
-from selenium import webdriver 
+from tkinter.scrolledtext import ScrolledText 
 import time
+import os
 #Por João Pedro
+try:
+    import youtube_dl
+except:
+    os.system("pip install youtube-dl")
+try:
+    from selenium import webdriver
+except:
+    os.sytem("pip install selenium")
 
 class App:
      def __init__(self, master=None):
@@ -48,10 +55,11 @@ class Automacao():
         video_div = self.driver.find_elements_by_id("contents")
         time.sleep(1)
         video_div[0].find_elements_by_id("dismissable")[0].click()
-        time.sleep(2)
+        time.sleep(1)
         return self.driver.current_url
 
     def BaixarMusica(self, url):
+        self.driver.get("https://www.youtube.com/")
         self.url = url
         print(self.nome)
         outtmpl = self.nome + '.mp3'
