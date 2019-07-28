@@ -61,7 +61,6 @@ class Automacao():
     def BaixarMusica(self, url):
         self.driver.get("https://www.youtube.com/")
         self.url = url
-        print(self.nome)
         outtmpl = self.nome + '.mp3'
         ydl_opts = {
             'format': 'bestaudio/best',
@@ -89,7 +88,6 @@ if __name__ == "__main__":
         musicas = file.readlines()
 
     for music in musicas:
-        print(music)
         url = auto.BuscarMusica(nome=music.strip("'\n'"))
         auto.BaixarMusica(url=url)
     auto.Quit()
